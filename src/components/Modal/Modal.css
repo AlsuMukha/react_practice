@@ -1,0 +1,49 @@
+.modal {
+    margin-top: 20px;
+}
+
+.modal__btn{
+    background: #fff;
+    padding: 10px 25px;
+    margin-left: 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in-out;
+}
+
+.modal__btn:hover {
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.modal__win {
+    background-color: #fff;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
+}
+
+.modal__win button {
+    font-size: 25px;
+    background-color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: gray;
+}
+  
+.modal__win img {
+      border-radius: 5px;
+      width: 100%;
+      height: 100%;
+}
