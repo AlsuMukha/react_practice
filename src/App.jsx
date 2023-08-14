@@ -5,6 +5,7 @@ import Counter from './components/Counter/Counter';
 import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const questions = [
   {
@@ -46,16 +47,21 @@ function App() {
   const prosent = Math.round(step/questions.length * 100)
 
   return (
-    <div>
-    <div className='wrapper'>
-      <Header />
-      <main>
-        <Counter />
-        <Modal />
-        { prosent != 100 ? <Quiz prosent = {prosent} question = {question} step ={step} onClickVariant= {onClickVariant} /> : <Result correct={correct} questions={questions}/> }
-      </main>
-    </div>
-  </div>
+
+    <BrowserRouter>
+      <div className='wrapper'>
+        <Routes>
+          <Route path="*" element={<Header />} />
+        </Routes>
+        <main>
+        <Routes>
+          <Route path="counter" element={<Counter />} />
+          <Route path="modal" element={<Modal />} />
+          <Route path="quiz" element={ prosent != 100 ? <Quiz prosent = {prosent} question = {question} step ={step} onClickVariant= {onClickVariant} /> : <Result correct={correct} questions={questions}/> } />
+        </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
