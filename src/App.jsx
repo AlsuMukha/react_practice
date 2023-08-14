@@ -6,6 +6,7 @@ import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Project from './components/Projects/Project';
 
 const questions = [
   {
@@ -55,6 +56,7 @@ function App() {
         </Routes>
         <main>
         <Routes>
+          <Route path="/" element={<Project />} />
           <Route path="counter" element={<Counter />} />
           <Route path="modal" element={<Modal />} />
           <Route path="quiz" element={ prosent != 100 ? <Quiz prosent = {prosent} question = {question} step ={step} onClickVariant= {onClickVariant} /> : <Result correct={correct} questions={questions}/> } />

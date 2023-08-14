@@ -1,0 +1,39 @@
+.project {
+    margin: 20px;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.project__flex{
+    padding: 0px 8px;
+    height: 100%;
+    display: flex;
+    flex: 0 1 50%;
+    margin: 0px 0px 30px 0px;
+
+}
+.project__img{
+    flex: 0 0 200px;
+}
+
+.project__img img {
+    max-width: 100%;
+}
+
+.project__description{
+    flex: 1 1 auto;
+    padding: 0px 0px 0px 15px;
+}
+
+.project__title {
+    font-size: 24px;
+    color: #445161;
+    margin-bottom: 12px;
+}
+.project__text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #333333;
+}
