@@ -6,6 +6,8 @@ import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
 import axios from 'axios'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Project from './components/Projects/Project';
 
 // const questions = [
 //   {
@@ -53,16 +55,21 @@ useEffect(() => {
   const prosent = Math.round(step/questions.length * 100)
 
   return (
-    <div>
-    <div className='wrapper'>
-      <Header />
-      <main>
-        <Counter />
-        <Modal />
-        { prosent != 100 ? <Quiz question={question} prosent = {prosent}  step ={step} onClickVariant= {onClickVariant} /> : <Result correct={correct} questions={questions}/> }
-      </main>
-    </div>
-  </div>
+    <BrowserRouter>
+      <div className='wrapper'>
+        <Routes>
+          <Route path="*" element={<Header />} />
+        </Routes>
+        <main>
+        <Routes>
+          <Route path="/" element={<Project />} />
+          <Route path="counter" element={<Counter />} />
+          <Route path="modal" element={<Modal />} />
+          <Route path="quiz" element={ prosent != 100 ? <Quiz prosent = {prosent} question = {question} step ={step} onClickVariant= {onClickVariant} /> : <Result correct={correct} questions={questions}/> } />
+        </Routes>
+        </main>
+      </div>
+    </BrowserRouter>
   )
 }
 
