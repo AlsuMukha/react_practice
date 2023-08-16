@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 
 
+
 const Quiz = ({question, prosent, step, onClickVariant}) => {
   if (!question) return "Подождите, данные загружаются"
   return (

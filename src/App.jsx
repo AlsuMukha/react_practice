@@ -8,24 +8,9 @@ import Result from './components/Quiz/Result';
 import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Project from './components/Projects/Project';
+import axios from 'axios'
 
-// const questions = [
-//   {
-//     title: 'Сколько лапок у паука?',
-//     variants: ['8', '4', '40'],
-//     correct: 0,
-//   },
-//   {
-//     title: 'Зимой и летом одним цветом ',
-//     variants: ['светофор', 'елочка', 'что угодно'],
-//     correct: 1,
-//   },
-//   {
-//     title: 'Сколько часов в сутки человеку нужно спать?',
-//     variants: ['весь день','всю ночь','8 часов'],
-//     correct: 2,
-//   },
-// ];
+
 
 const baseURL = "https://64db776d593f57e435b10048.mockapi.io/questions";
 
@@ -33,6 +18,14 @@ function App() {
 
   const [step, setStep] = useState(0)
   const [correct, setCorrect] = useState(0)
+  const [questions, setQuestions] = useState([]);
+  const question = questions[step]
+
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setQuestions(response.data);
+    });
+  }, []);
 
   const [questions, setQuestions] = useState([]);
   const question = questions[step]
