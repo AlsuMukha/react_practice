@@ -26,9 +26,6 @@ function App() {
       setQuestions(response.data);
     });
   }, []);
-
-  const [questions, setQuestions] = useState([]);
-  const question = questions[step]
   
   
 useEffect(() => {
