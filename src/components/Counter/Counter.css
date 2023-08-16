@@ -1,0 +1,27 @@
+.counter {
+    background-color: bisque;
+    margin: 20px auto;
+    width: 150px;
+}
+
+.counter__title {
+    text-align: center;
+    font-size: 26px;
+}
+
+.counter__number {
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 26px;
+}
+.counter__button {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.counter button{
+    background-color: bisque;
+    font-size: 26px;
+    padding: 5px ;
+}
