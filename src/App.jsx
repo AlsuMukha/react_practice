@@ -1,43 +1,50 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import Counter from './components/Counter/Counter';
 import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Project from './components/Projects/Project';
 
-const questions = [
-  {
-    title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
-    correct: 0,
-  },
-  {
-    title: 'Компонент - это ... ',
-    variants: ['приложение', 'часть приложения или страницы', 'то, что я не знаю что такое'],
-    correct: 1,
-  },
-  {
-    title: 'Что такое JSX?',
-    variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
-    ],
-    correct: 2,
-  },
-];
+// const questions = [
+//   {
+//     title: 'Сколько лапок у паука?',
+//     variants: ['8', '4', '40'],
+//     correct: 0,
+//   },
+//   {
+//     title: 'Зимой и летом одним цветом ',
+//     variants: ['светофор', 'елочка', 'что угодно'],
+//     correct: 1,
+//   },
+//   {
+//     title: 'Сколько часов в сутки человеку нужно спать?',
+//     variants: ['весь день','всю ночь','8 часов'],
+//     correct: 2,
+//   },
+// ];
+
+const baseURL = "https://64db776d593f57e435b10048.mockapi.io/questions";
 
 function App() {
 
   const [step, setStep] = useState(0)
-  const question = questions[step]
   const [correct, setCorrect] = useState(0)
 
+  const [questions, setQuestions] = useState([]);
+  const question = questions[step]
+  
+  
+useEffect(() => {
+  axios.get(baseURL).then((response) => {
+    setQuestions(response.data);
+  });
+}, []);
+
   const onClickVariant = (index) => {
-    console.log(index)
     setStep(step + 1)
 
     if (index === question.correct) {
@@ -48,7 +55,6 @@ function App() {
   const prosent = Math.round(step/questions.length * 100)
 
   return (
-
     <BrowserRouter>
       <div className='wrapper'>
         <Routes>
