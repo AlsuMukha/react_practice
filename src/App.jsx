@@ -5,9 +5,11 @@ import Counter from './components/Counter/Counter';
 import Modal from './components/Modal/Modal';
 import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
+import axios from 'axios'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Project from './components/Projects/Project';
 import axios from 'axios'
+
 
 
 const baseURL = "https://64db776d593f57e435b10048.mockapi.io/questions";
@@ -25,8 +27,17 @@ function App() {
     });
   }, []);
 
+  const [questions, setQuestions] = useState([]);
+  const question = questions[step]
+  
+  
+useEffect(() => {
+  axios.get(baseURL).then((response) => {
+    setQuestions(response.data);
+  });
+}, []);
+
   const onClickVariant = (index) => {
-    console.log(index)
     setStep(step + 1)
 
     if (index === question.correct) {
@@ -37,7 +48,6 @@ function App() {
   const prosent = Math.round(step/questions.length * 100)
 
   return (
-
     <BrowserRouter>
       <div className='wrapper'>
         <Routes>
