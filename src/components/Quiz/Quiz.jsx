@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 
 const Quiz = ({prosent, question, step, onClickVariant}) => {
-
+  if (!question) return "Подождите, данные загружаются"
   return (
     <div className='quiz'>
         <div className="progress">

@@ -7,34 +7,23 @@ import Quiz from './components/Quiz/Quiz';
 import Result from './components/Quiz/Result';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Project from './components/Projects/Project';
+import axios from 'axios'
 
-const questions = [
-  {
-    title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
-    correct: 0,
-  },
-  {
-    title: 'Компонент - это ... ',
-    variants: ['приложение', 'часть приложения или страницы', 'то, что я не знаю что такое'],
-    correct: 1,
-  },
-  {
-    title: 'Что такое JSX?',
-    variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
-    ],
-    correct: 2,
-  },
-];
+
+const baseURL = "https://64db776d593f57e435b10048.mockapi.io/questions";
 
 function App() {
 
   const [step, setStep] = useState(0)
-  const question = questions[step]
   const [correct, setCorrect] = useState(0)
+  const [questions, setQuestions] = useState([]);
+  const question = questions[step]
+
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setQuestions(response.data);
+    });
+  }, []);
 
   const onClickVariant = (index) => {
     console.log(index)
